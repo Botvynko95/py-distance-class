@@ -19,8 +19,8 @@ class Distance:
     def __iadd__(self, other: Union[Distance, Number]) -> Distance:
         if isinstance(other, Distance):
             self.km += other.km
-        else:
-            self.km += other
+            return self
+        self.km += other
         return self
 
     def __repr__(self) -> str:
@@ -42,7 +42,7 @@ class Distance:
             return self.km > other.km
         return self.km > other
 
-    def __eq__(self, other: object) -> bool:  # тут краще object
+    def __eq__(self, other: object) -> bool:
         if isinstance(other, Distance):
             return self.km == other.km
         if isinstance(other, (int, float)):
